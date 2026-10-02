@@ -18,6 +18,11 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
           
+      - name: Kunci Versi Flutter (Penyelamat)
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.3'
+          
       - name: Siapkan Python
         uses: actions/setup-python@v5
         with:
@@ -28,7 +33,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install flet==0.25.2 pandas openpyxl
           
-      - name: Rakit Menjadi APK (Otomatis)
+      - name: Rakit Menjadi APK
         run: yes | flet build apk
         
       - name: Simpan File APK
