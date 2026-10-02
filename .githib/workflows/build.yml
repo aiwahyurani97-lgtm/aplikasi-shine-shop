@@ -17,18 +17,13 @@ jobs:
         with:
           python-version: '3.11'
           
-      - name: Siapkan Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-          
       - name: Install Library Python
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
       - name: Proses Build APK
-        run: yes | flet build apk
+        run: echo "y" | flet build apk
         
       - name: Upload Hasil APK
         uses: actions/upload-artifact@v4
