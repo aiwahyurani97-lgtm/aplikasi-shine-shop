@@ -12,15 +12,21 @@ jobs:
       - name: Ambil Kode
         uses: actions/checkout@v4
         
+      - name: Siapkan Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          
       - name: Siapkan Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           
-      - name: Siapkan Flutter
+      - name: Siapkan Flutter 3.24.3
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          flutter-version: '3.24.3'
           
       - name: Install Library
         run: |
@@ -28,7 +34,7 @@ jobs:
           pip install flet pandas openpyxl
           
       - name: Proses Build APK
-        run: yes | flet build apk
+        run: flet build apk
         
       - name: Upload Hasil APK
         uses: actions/upload-artifact@v4
